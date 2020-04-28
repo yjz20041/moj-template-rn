@@ -3,12 +3,19 @@ import {
 } from 'redux';
 import { connect } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
+
+/**  引入reducer和action START */
 import home, { actions as actionsHome } from './home';
 
-
 const combinedActions = {
-    home: actionsHome
+    home: actionsHome,
+    profile: actionsProfile
 };
+
+const combinedReducers = {
+    home,
+};
+/**  引入reducer和action END */
 
 const middlewares = [promiseMiddleware()];
 
@@ -39,6 +46,8 @@ export const connectByModule = (moduleName, mapStateToProps, mapDispatchToProps)
     return target => connect(mapStateToProps, mapDispatchToPropsWrap)(target);
 };
 
-export default createStore(combineReducers({
-    home
-}), applyMiddleware(...middlewares));
+
+const store = createStore(combineReducers(combinedReducers), applyMiddleware(...middlewares));
+export default store;
+
+export const withRedux = fn => props => fn(props, store);
