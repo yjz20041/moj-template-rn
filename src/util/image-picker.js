@@ -1,49 +1,22 @@
+/* eslint-disable arrow-body-style */
+import RPC from './rpc';
 
-import Alert from '@util/alert';
-import { IS_IOS } from '@util/env';
-import { NativeModules } from 'react-native';
-
-const { ImagePicker } = NativeModules;
 
 export default (param) => {
-    if (!ImagePicker) {
-        Alert('找不到对应模块');
-        return '';
-    }
-    if (IS_IOS) {
-        return new Promise((resolve) => {
-            ImagePicker.showImagePicker(param, (response) => {
-                let res;
-                try {
-                    res = JSON.parse(response);
-                    if (res.success === 1) {
-                        if (!res.didCancel) {
-                            resolve(res);
-                        }
-                    } else {
-                        alert('上传失败，请重试');
-                    }
-                } catch (e) {
-                    alert('上传失败，请重试');
-                }
-            });
-        });
-    }
-    return ImagePicker.showImagePicker(param)
-        // eslint-disable-next-line consistent-return
-        .then((response) => {
-            let res;
-            try {
-                res = JSON.parse(response);
-                if (res.success) {
-                    return res;
-                }
-                Alert('上传失败，请重试');
-            } catch (e) {
-                Alert('上传失败，请重试');
-            }
-        })
-        .catch(() => {
-            Alert('上传失败，请重试');
-        });
+    return RPC.showImagePicker(param).then((res) => {
+        return {
+            ...res,
+            url: res.url || res.remoteUrl,
+            nosKey: res.nosKey
+            // nosKey: 'yyimgs/a0c8/68c4/687d/d2af60cf94d475c0156b23ac287bd27b.png'
+        };
+    }).catch((e) => {
+        // if (e && e.Code !== 301) {
+        //     RPC.showToast({
+        //         text: '上传失败，请重试'
+        //     });
+        //     throw e;
+        // }
+        throw e;
+    });
 };

@@ -1,4 +1,4 @@
-import alert from '@util/alert';
+import RPC from './rpc';
 import { proxyConfig } from '../config/app.config.js';
 
 const Fetch = (url, opt = {}) => {
@@ -34,12 +34,24 @@ const Fetch = (url, opt = {}) => {
             }
         }
     }
-    return fetch(url, nextOpt).then(ret => ret.json()).catch((e) => {
-        if (nextOpt.noError !== true) {
-            alert(e);
-        } else {
-            throw e;
+    return fetch(url, nextOpt).then(ret => ret.json()).then((res) => {
+        const {
+            code
+        } = res;
+        if (code !== 200 && nextOpt.noError !== true) {
+            RPC.showToast({
+                text: '网络繁忙，请重试'
+            });
+            throw res;
         }
+        return res;
+    }).catch((e) => {
+        if (nextOpt.noError !== true) {
+            RPC.showToast({
+                text: '网络繁忙，请重试'
+            });
+        }
+        throw e;
     });
 };
 
