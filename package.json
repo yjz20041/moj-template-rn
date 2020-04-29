@@ -43,12 +43,9 @@
   "dependencies": {
     "@music/mnb-rn": "^2.0.0-beta.10",
     "@react-native-community/datetimepicker": "2.3.0",
-    "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-native": "0.60.5",
-    "react-native-gesture-handler": "1.4.1",
-    "react-native-image-zoom-viewer": "2.2.27",
     "react-native-reanimated": "1.2.0",
     "react-native-screens": "2.0.0",
     "react-native-svg": "11.0.1",
