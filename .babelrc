@@ -1,4 +1,4 @@
-/*用于工程内alias
+/*用于工程内alias,babe.config.js的作用范围是全局的，而.babelrc以package.json为分界线，是局部作用域
 */
 {
     "plugins": [
@@ -8,10 +8,13 @@
                 "root": ["./src"],
                 "alias": {
                     "@util": "./src/util",
+                    "@config": "./src/config",
                     "@component": "./src/component",
                     "@service": "./src/service",
                     "@redux": "./src/redux",
-                    "@container": "./src/container"
+                    "@container": "./src/container",
+                    "@asset": "./src/asset",
+                    "@style": "./src/asset/style"
                 }
             }
         ]
