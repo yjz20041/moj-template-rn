@@ -3,9 +3,9 @@ import React from 'react';
 import {
     Text,
     Button,
-    StyleSheet
+    StyleSheet,
+    View
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { PropTypes } from 'prop-types';
 import { connectByModule } from '@redux/store';
 
@@ -26,7 +26,7 @@ class Home extends React.PureComponent {
             saidWords
         } = this.props;
         return (
-            <SafeAreaView style={
+            <View style={
                 styles.container
             }>
                 <Text>home2</Text>
@@ -37,7 +37,7 @@ class Home extends React.PureComponent {
                     onPress={() => this.props.actions.say('hello')}
                     title="dispatch action" />
                 <Text>{saidWords}</Text>
-            </SafeAreaView>
+            </View>
         );
     }
 }

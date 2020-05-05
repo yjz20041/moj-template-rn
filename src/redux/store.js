@@ -8,8 +8,7 @@ import promiseMiddleware from 'redux-promise-middleware';
 import home, { actions as actionsHome } from './home';
 
 const combinedActions = {
-    home: actionsHome,
-    profile: actionsProfile
+    home: actionsHome
 };
 
 const combinedReducers = {
