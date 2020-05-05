@@ -11,7 +11,7 @@ class Detail extends React.PureComponent {
     render() {
         const topBarProp = {
             title: '详情页'
-        }
+        };
         return (
             <PageContainer topBarProp={topBarProp}>
                 <Text>detail</Text>
