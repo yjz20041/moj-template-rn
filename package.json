@@ -38,6 +38,7 @@
     "elint": "^1.11.1",
     "metro-react-native-babel-preset": "^0.58.0",
     "npm-run-all": "^4.1.5",
+    "react-native-bundle-visualizer": "^2.1.1",
     "shelljs": "^0.8.3"
   },
   "dependencies": {
