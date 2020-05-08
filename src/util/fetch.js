@@ -32,10 +32,12 @@ const wrapFetch = (url, options = {}) => {
             });
         }
     }).finally(() => {
-        loadingCount--;
-        if (loadingCount <= 0) {
-            clearTimeout(loadingTimer);
-            RPC.hideLoading();
+        if (loading === true) {
+            loadingCount--;
+            if (loadingCount <= 0) {
+                clearTimeout(loadingTimer);
+                RPC.hideLoading();
+            }
         }
     });
 };
