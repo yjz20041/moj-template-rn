@@ -41,7 +41,7 @@ const wrapFetch = (url, options = {}) => {
         }
     });
 };
-wrapFetch.post = (url, options) => {
+wrapFetch.post = (url, options = {}) => {
     // eslint-disable-next-line no-param-reassign
     options.method = 'post';
     return wrapFetch(url, options);
