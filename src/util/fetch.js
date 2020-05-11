@@ -27,7 +27,7 @@ const wrapFetch = (url, options = {}) => {
     return Fetch(url, options).catch(() => {
         if (error === true) {
             RPC.showToast({
-                message: '网络繁忙，请重试',
+                text: '网络繁忙，请重试',
                 duratin: 1
             });
         }
