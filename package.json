@@ -45,7 +45,7 @@
     "@music/mnb-rn": "^2.0.0-beta.10",
       "@music/mobile-orpheuslink": "^0.1.13",
       "@music/mosi-rn-component": "^0.1.9",
-      "@music/mosi-rn-util": "^0.1.8",
+      "@music/mosi-rn-util": "^0.1.14",
       "prop-types": "^15.7.2",
       "react": "^16.13.1",
       "react-native": "0.60.5",
