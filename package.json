@@ -39,11 +39,12 @@
     "metro-react-native-babel-preset": "^0.58.0",
     "npm-run-all": "^4.1.5",
     "react-native-bundle-visualizer": "^2.1.1",
+    "react-native-dotenv": "^0.2.0",
     "shelljs": "^0.8.3"
   },
   "dependencies": {
     "@music/mnb-rn": "^2.0.0-beta.10",
-      "@music/mobile-orpheuslink": "^0.1.13",
+      "@music/mobile-orpheuslink": "^0.1.14",
       "@music/mosi-rn-component": "^0.1.9",
       "@music/mosi-rn-util": "^0.1.14",
       "prop-types": "^15.7.2",
