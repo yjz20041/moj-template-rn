@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@music/mnb-rn": "^2.0.0-beta.10",
-      "@music/mobile-orpheuslink": "^0.1.14",
+      "@music/mobile-orpheuslink": "^0.1.15",
       "@music/mosi-rn-component": "^0.1.9",
       "@music/mosi-rn-util": "^0.1.14",
       "prop-types": "^15.7.2",
