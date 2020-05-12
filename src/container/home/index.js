@@ -20,7 +20,7 @@ class Home extends React.PureComponent {
         } = this.props;
         const topBarProp = {
             title: '首页',
-            onBack: this.onExit
+            onExit: this.onExit
         };
         return (
             <PageContainer topBarProp={topBarProp}>
