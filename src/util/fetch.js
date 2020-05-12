@@ -8,7 +8,7 @@ setProxyConfig(proxyConfig);
 
 let loadingCount = 0;
 let showLoading = false;
-const loadingTimeout = 5000;
+const loadingTimeout = 3000;
 let loadingTimer;
 
 const wrapFetch = async (url, options = {}) => {
