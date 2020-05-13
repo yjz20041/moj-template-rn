@@ -25,7 +25,8 @@ const wrapFetch = async (url, options = {}) => {
         forceFetch,
         // 只从缓存中刷新
         forceCache,
-        onCache
+        onCache,
+        onNoCache
     } = options;
     // 是否需要缓存
     const cacheKey = `CACHE_FETCH_${url}`;
@@ -43,6 +44,9 @@ const wrapFetch = async (url, options = {}) => {
                     return new Promise();
                 }
             } else {
+                if (typeof onNoCache === 'function') {
+                    onNoCache();
+                }
                 CACHE.remove(cacheKey);
             }
         }
