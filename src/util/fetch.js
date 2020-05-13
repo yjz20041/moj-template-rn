@@ -1,8 +1,6 @@
 import Fetch, { setProxyConfig } from '@music/mosi-rn-util/es/fetch';
 import RPC from '@music/mosi-rn-util/es/rpc';
-import CACHE from '@music/mosi-rn-util/es/cache';
 import { proxyConfig } from '@config/app.config';
-import { CACHE_VERSION } from 'react-native-dotenv';
 
 setProxyConfig(proxyConfig);
 
@@ -19,38 +17,7 @@ const wrapFetch = async (url, options = {}) => {
     const {
         loading,
         error,
-        // 是否缓存
-        cache,
-        cacheKey = `CACHE_FETCH_${url}`,
-        // 强制刷新
-        forceFetch,
-        // 只从缓存中刷新
-        forceCache,
-        onCache,
-        onNoCache
     } = options;
-    // 是否需要缓存
-    if (cache && forceFetch !== true) {
-        const cacheData = await CACHE.get(cacheKey);
-        if (cacheData) {
-            const {
-                cacheVersion,
-                cacheContent
-            } = cacheData;
-            // 版本一致，命中缓存回调
-            if (cacheVersion === CACHE_VERSION && typeof onCache === 'function') {
-                onCache(cacheContent);
-                if (forceCache) {
-                    return new Promise();
-                }
-            } else {
-                if (typeof onNoCache === 'function') {
-                    onNoCache();
-                }
-                CACHE.remove(cacheKey);
-            }
-        }
-    }
     if (loading === true) {
         if (loadingCount <= 0) {
             RPC.showLoading();
@@ -62,13 +29,8 @@ const wrapFetch = async (url, options = {}) => {
         }
         loadingCount++;
     }
+    // eslint-disable-next-line arrow-body-style
     return Fetch(url, options).then((res) => {
-        if (cache) {
-            CACHE.set(cacheKey, {
-                cacheVersion: CACHE_VERSION,
-                cacheContent: res
-            });
-        }
         return res;
     }).catch((err) => {
         if (error !== false) {
