@@ -21,6 +21,7 @@ const wrapFetch = async (url, options = {}) => {
         error,
         // 是否缓存
         cache,
+        cacheKey = `CACHE_FETCH_${url}`,
         // 强制刷新
         forceFetch,
         // 只从缓存中刷新
@@ -29,7 +30,6 @@ const wrapFetch = async (url, options = {}) => {
         onNoCache
     } = options;
     // 是否需要缓存
-    const cacheKey = `CACHE_FETCH_${url}`;
     if (cache && forceFetch !== true) {
         const cacheData = await CACHE.get(cacheKey);
         if (cacheData) {
