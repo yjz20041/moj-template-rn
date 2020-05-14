@@ -5,7 +5,11 @@ import Cache from '@music/mosi-rn-util/es/cache';
 import RPC from '@music/mosi-rn-util/es/rpc';
 import { CACHE_VERSION } from 'react-native-dotenv';
 
-let uid;
+import {
+    IS_APP
+} from '@music/mosi-rn-util/es/env';
+
+let uid = !IS_APP ? 'SIMULATOR' : undefined;
 const get = async (key) => {
     if (!uid) {
         const userInfo = await RPC.getUserInfo();
