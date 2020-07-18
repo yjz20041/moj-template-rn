@@ -1,4 +1,4 @@
-package com.{{projectName}};
+package com.<%=projectName%>;
 
 import android.app.Application;
 import android.util.Log;

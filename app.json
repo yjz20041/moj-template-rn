@@ -1,4 +1,4 @@
 {
-  "name": "{{projectName}}",
-  "displayName": "{{projectName}}"
+  "name": "<%=projectName%>",
+  "displayName": "<%=projectName%>"
 }
